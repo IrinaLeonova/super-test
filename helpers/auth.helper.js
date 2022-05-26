@@ -17,3 +17,12 @@ class AuthHelper {
 
 }
 export default AuthHelper
+
+// const login = (username, password) => {    ТАК ТОЖЕ МОЖНО, ИСПОЛЬЗОВАТЬ КЛАССЫ НЕОБЯЗАТЕЛЬНО
+//     await supertest(process.env.BASE_URL)
+//         .post('/auth')
+//         .send({login:username, password:password})
+//         .then(res => {
+//             this.response = res
+//         })
+
