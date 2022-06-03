@@ -1,5 +1,6 @@
 {
   "name": "super-test",
+  "version": "1.0.0",
   "description": "API tests for Paysis project",
   "scripts": {
     "test": "npx mocha --config .mocharc.js"
@@ -13,8 +14,10 @@
     "@babel/plugin-transform-runtime": "^7.17.12",
     "@babel/preset-env": "^7.17.12",
     "@babel/register": "^7.17.7",
+    "body-parser": "^1.20.0",
     "chai": "^4.3.6",
     "dotenv": "^16.0.1",
+    "express": "^4.18.1",
     "mocha": "^10.0.0",
     "supertest": "^6.2.3"
   }

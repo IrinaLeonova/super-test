@@ -1,28 +1,34 @@
-import supertest from "supertest";
+import supertest from 'supertest'
 
-class UsersHelper {
+class TransactionsHelper {
     response
 
-    async create() {
+    async create(Users1Id, UsersId2, amount) {
+        //send async request
         await supertest(process.env.BASE_URL)
-            .post('/users')
+            // setup a request method - POST and an endpoint - /auth
+            .post('/transactions')
+            // Add token to uou request (for each protected route)
             .set('Authorization', `Bearer ${process.env.TOKEN}`)
+            //setup payload - object with 2 keys - login and password(and their values)
+            .send({from: Users1Id, to: UsersId2, amount: amount } )
+            //save a response from server to result variable
             .then(res => {
                 this.response = res
             })
     }
-    async delete(id) { // функции внутри классов называются методы
+    async delete(id) {
         await supertest(process.env.BASE_URL)
-            .delete('/users')
+            .delete('/transactions')
             .set('Authorization', `Bearer ${process.env.TOKEN}`)
             .send({id: id })
             .then(res => {
-                this.response = res //чтобы обратиться к контексту классов нужно исп ключевое слово this. Ответ сервера записывается в response
+                this.response = res
             })
     }
     async getByID(id) {
         await supertest(process.env.BASE_URL)
-            .get(`/users?id=${id}`)
+            .get(`/transactions?id=${id}`)
             .set('Authorization', `Bearer ${process.env.TOKEN}`)
             .then(res => {
                 this.response = res
@@ -30,13 +36,11 @@ class UsersHelper {
     }
     async getAll() {
         await supertest(process.env.BASE_URL)
-            .get('/users')
+            .get('/transactions')
             .set('Authorization', `Bearer ${process.env.TOKEN}`)
             .then(res => {
                 this.response = res
             })
     }
-
 }
-
-export default UsersHelper
+export default TransactionsHelper

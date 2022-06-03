@@ -1,20 +1,15 @@
 import UsersHelper from '../helpers/users.helper'
 import { getRandomItem} from "../helpers/common.helper";
 import {expect} from 'chai'
-import ConfigHelper from "../helpers/config.helper";
+
 
 describe('Users', function(){
-    let userHelper = new UsersHelper()
+    let userHelper = new UsersHelper() //создаем дубликат
     let userId
 
     before(async function () {
-        await userHelper.create()
-        userId = userHelper.response.body.id
-    })
-
-    after(async function() {
-        const configHelper = new ConfigHelper()
-        await configHelper.wipeData()
+        await userHelper.create() //Отправляем запрос на создание клиента
+        userId = userHelper.response.body.id //Обращаемся к переменной(response(из users.helper)) - body.id = синтаксис http-запроса. Мы ожидаем, что сервер пришлет нам токен с айди, поэтому пишем id
     })
 
 describe('user creation', function() {
