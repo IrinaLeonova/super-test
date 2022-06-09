@@ -1,4 +1,4 @@
-import supertest from 'supertest'
+import supertest from 'supertest'  // файлы helpers выступают в качестве помощников в общении с API
 
 class AuthHelper {
     // constructor() {

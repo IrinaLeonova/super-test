@@ -15,6 +15,11 @@ before( async function() {
     process.env['TOKEN'] = authHelper.response.body.token
 
 })
+
+after(async function() {
+    const configHelper = new ConfigHelper()
+    await configHelper.wipeData()
+})
 after(async function() {
     if(!baseUrl.includes(port)) {
         const configHelper = new ConfigHelper()

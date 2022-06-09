@@ -36,6 +36,8 @@ function start(port){
         await res.status(200).send({"message": "Data wiped out."})
     })
 
+
+
     before(async function(){
         server = await app.listen(port)
         console.log(`Mock server is running on port ${port}`)
